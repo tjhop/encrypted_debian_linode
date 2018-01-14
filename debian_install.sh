@@ -263,6 +263,11 @@ ln -s ../grub .
 # install standard packages, some supplementary stuff, and cleanup
 echo "~ Updating system and installing some default packages"
 tasksel install standard
+
+# Install salt from saltstack directly for more up-to-date packages
+wget -O - https://repo.saltstack.com/apt/debian/9/amd64/latest/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
+echo 'deb http://repo.saltstack.com/apt/debian/9/amd64/latest stretch main' > /etc/apt/sources.list.d/saltstack.list
+apt-get -o Acquire::ForceIPv4=true update
 apt-get -o Acquire::ForceIPv4=true install -y -- $(cat << PKG_LIST_EOF | tr '\n' ' '
 git
 nmap
