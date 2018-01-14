@@ -271,7 +271,7 @@ apt-get -o Acquire::ForceIPv4=true update
 apt-get -o Acquire::ForceIPv4=true install -y -- $(cat << PKG_LIST_EOF | tr '\n' ' '
 git
 nmap
-screen
+tmux
 dnsutils
 tcpdump
 clamav
